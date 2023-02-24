@@ -5,12 +5,24 @@ import QuestionCard from "./questioncard";
 import MultipleChoiceOption from "./multiplechoiceoption";
 
 const correct = 'B';
-const handleClick = (option: MultipleChoiceOption): void => {
-  console.log(option.props.title + ' has been clicked...');
 
-  if(option.props.option_index == correct) {
-    console.log('CORRECT!');
-  }
+interface MultipleChoiceQuestion {
+  prompt: string;
+  answers: Map<string, boolean>;
+}
+
+const question: MultipleChoiceQuestion = {
+  prompt: 'What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?', 
+  answers: new Map<string, boolean>([
+    ['Tetrahedral', false],
+    ['Trigonal bipyramidal', true],
+    ['Trigonal pyramidal', false],
+    ['Trigonal planar', false]
+  ])
+};
+
+const handleClick = (option: MultipleChoiceOption): void => {
+  option.select();
 };
 
 const Home: NextPage = () => {
@@ -24,10 +36,10 @@ const Home: NextPage = () => {
       <main className="bg-gray-200 flex justify-center items-center space-between h-screen">
         <QuestionCard prompt="What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?"/>
         <div className="columns">
-          <MultipleChoiceOption click_callback={handleClick} option_index="A" title="Tetrahedral"/>
-          <MultipleChoiceOption click_callback={handleClick} option_index="B" title="Trigonal bipyramidal"/>
-          <MultipleChoiceOption click_callback={handleClick} option_index="C" title="Trigonal pyramidal"/>
-          <MultipleChoiceOption click_callback={handleClick} option_index="D" title="Trigonal planar"/>
+          <MultipleChoiceOption correct={false} click_callback={handleClick} option_index="A" title="Tetrahedral"/>
+          <MultipleChoiceOption correct={true} click_callback={handleClick} option_index="B" title="Trigonal bipyramidal"/>
+          <MultipleChoiceOption correct={false} click_callback={handleClick} option_index="C" title="Trigonal pyramidal"/>
+          <MultipleChoiceOption correct={false} click_callback={handleClick} option_index="D" title="Trigonal planar"/>
         </div>
       </main>
     </>
