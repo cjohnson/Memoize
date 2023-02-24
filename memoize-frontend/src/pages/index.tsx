@@ -22,13 +22,15 @@ type MultipleChoiceOptionProps = {
 }
 
 export const MultipleChoiceOption = ({ title: title, option_index: option_index }: MultipleChoiceOptionProps) => <aside>
-  <div className="max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-white">
-    <div className="px-6 py-4">
-      <p className="text-gray-700 text-base">
-        { option_index }: {title}
-      </p>
+  <a href='#'>
+    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-white">
+      <div className="px-6 py-4">
+        <p className="text-gray-700 text-base">
+          { option_index }: {title}
+        </p>
+      </div>
     </div>
-  </div>
+  </a>
 </aside>
 
 const Home: NextPage = () => {
