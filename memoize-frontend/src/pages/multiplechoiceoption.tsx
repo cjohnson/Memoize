@@ -3,7 +3,7 @@ import React from "react";
 type MultipleChoiceOptionProps = {
   title: string,
   option_index: string,
-  click_callback: (option_title: string) => void
+  click_callback: (option_title: MultipleChoiceOption) => void
 }
 
 class MultipleChoiceOption extends React.Component<MultipleChoiceOptionProps> {  
@@ -11,7 +11,7 @@ class MultipleChoiceOption extends React.Component<MultipleChoiceOptionProps> {
     return (
       <>
         <div className="max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-white">
-          <a href='#' onClick={() => this.props.click_callback(this.props.title)}>
+          <a href='#' onClick={() => this.props.click_callback(this)}>
             <div className="px-6 py-4">
               <p className="text-gray-700 text-base">
                 { this.props.option_index }: { this.props.title }
