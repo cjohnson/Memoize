@@ -17,7 +17,7 @@ export const Card = ({ prompt: prompt }: CardProps) => <aside>
   </div>
 </aside>
 
-const handleClick = (): void => console.log('Something has been clicked...');
+const handleClick = (option_title: string): void => console.log(option_title + ' has been clicked...');
 
 const Home: NextPage = () => {
   return (
