@@ -17,7 +17,14 @@ export const Card = ({ prompt: prompt }: CardProps) => <aside>
   </div>
 </aside>
 
-const handleClick = (option: MultipleChoiceOption): void => console.log(option.props.title + ' has been clicked...');
+const correct = 'B';
+const handleClick = (option: MultipleChoiceOption): void => {
+  console.log(option.props.title + ' has been clicked...');
+
+  if(option.props.option_index == correct) {
+    console.log('CORRECT!');
+  }
+};
 
 const Home: NextPage = () => {
   return (
