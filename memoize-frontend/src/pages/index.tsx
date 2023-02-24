@@ -17,6 +17,8 @@ export const Card = ({ prompt: prompt }: CardProps) => <aside>
   </div>
 </aside>
 
+const handleClick = (): void => console.log('Something has been clicked...');
+
 const Home: NextPage = () => {
   return (
     <>
@@ -28,10 +30,10 @@ const Home: NextPage = () => {
       <main className="bg-gray-200 flex justify-center items-center space-between h-screen">
         <Card prompt="What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?"/>
         <div className="columns">
-          <MultipleChoiceOption option_index="A" title="Tetrahedral"/>
-          <MultipleChoiceOption option_index="B" title="Trigonal bipyramidal"/>
-          <MultipleChoiceOption option_index="C" title="Trigonal pyramidal"/>
-          <MultipleChoiceOption option_index="D" title="Trigonal planar"/>
+          <MultipleChoiceOption click_callback={handleClick} option_index="A" title="Tetrahedral"/>
+          <MultipleChoiceOption click_callback={handleClick} option_index="B" title="Trigonal bipyramidal"/>
+          <MultipleChoiceOption click_callback={handleClick} option_index="C" title="Trigonal pyramidal"/>
+          <MultipleChoiceOption click_callback={handleClick} option_index="D" title="Trigonal planar"/>
         </div>
       </main>
     </>
