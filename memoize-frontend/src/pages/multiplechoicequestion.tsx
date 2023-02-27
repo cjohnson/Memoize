@@ -31,6 +31,7 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
 
   select = (index: number) => this.setState(state => {
     if(state.selections[index]) return state;
+    if(state.selectedExplanations.some(value => value.correct)) return state;
 
     state.selections[index] = true;
 
@@ -60,7 +61,7 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
     const explanations: Array<ReactElement> = [];
     for(let i = 0; i < this.state.selectedExplanations.length; ++i) {
       const isCorrect = this.state.selectedExplanations[i]?.correct ?? false;
-      const textColor = isCorrect ? 'text-green-900' : 'text-red-500';
+      const textColor = isCorrect ? 'text-green-900' : 'text-red-600';
       const questionLabel = this.state.selectedExplanations[i]?.label ?? '';
       const correctionText = isCorrect ? 'Correct!' : 'Not quite.';
       const explanation = this.state.selectedExplanations[i]?.explanation ?? '';
