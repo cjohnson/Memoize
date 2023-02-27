@@ -77,7 +77,7 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
       <>
         <div className="columns">
           <div className="flex justify-center items-center space-between">
-            <MultipleChoicePromptCard prompt="What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?"/>
+            <MultipleChoicePromptCard prompt={ this.props.prompt }/>
             <div className="columns">
               { options }
             </div>
