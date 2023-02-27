@@ -9,6 +9,8 @@ interface MultipleChoiceAnswer {
   selected?: boolean,
   explanation: string;
 }
+const multipleChoiceAnswerDefault: MultipleChoiceAnswer 
+ = { label: '', correct: false, selected: false, explanation: '' }
 
 export interface MultipleChoiceQuestionProps {
   prompt: string;
@@ -35,8 +37,7 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
 
     state.selections[index] = true;
 
-    state.selectedExplanations.push(this.props.answers[index] 
-      ?? { label: '', correct: false, selected: false, explanation: '' });
+    state.selectedExplanations.push(this.props.answers[index] ?? multipleChoiceAnswerDefault);
 
     return state;
   });
