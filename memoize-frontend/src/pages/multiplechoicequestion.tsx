@@ -49,12 +49,27 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
       />);
     }
 
+    const explanations: Array<ReactElement> = [];
+    for(let i = 0; i < this.props.answers.length; ++i) {
+      if(!this.state.selections[i]) continue;
+
+      explanations.push(<div className="m-4">
+        <p className={ this.props.answers[i]?.correct ?? false ? 'text-green-900' : 'text-red-500' }><strong>{ this.props.answers[i]?.label ?? '' } - { this.props.answers[i]?.correct ?? false ? 'Correct!' : 'Not quite.' }</strong></p>
+        <p>{ this.props.answers[i]?.explanation ?? '' }</p>
+      </div>);
+    }
+
     return (
       <>
-        <div className="flex justify-center items-center space-between">
-          <MultipleChoicePromptCard prompt="What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?"/>
-          <div className="columns">
-            { options }
+        <div className="columns">
+          <div className="flex justify-center items-center space-between">
+            <MultipleChoicePromptCard prompt="What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?"/>
+            <div className="columns">
+              { options }
+            </div>
+          </div>
+          <div>
+            { explanations }
           </div>
         </div>
       </>
