@@ -9,31 +9,36 @@ const handleClick = (option: MultipleChoiceOption): void => {
   option.select();
 };
 
+interface MultipleChoiceAnswer {
+  label: string,
+  correct: boolean,
+  explanation: string;
+}
 interface MultipleChoiceQuestion {
   prompt: string;
-  answers: Map<string, boolean>;
+  answers: Array<MultipleChoiceAnswer>;
 }
 
 const Home: NextPage = () => {
   const question: MultipleChoiceQuestion = {
     prompt: 'What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?', 
-    answers: new Map<string, boolean>([
-      ['Tetrahedral', false],
-      ['Trigonal bipyramidal', true],
-      ['Trigonal pyramidal', false],
-      ['Trigonal planar', false]
-    ])
+    answers: [
+      { label: "Tetrahedral", correct: false, explanation: "A central atom with a tetrahedral electron geometry would have 4 electron groups." },
+      { label: "Trigonal bipyramidal", correct: true, explanation: "A central atom with a trigonal pyramidal electron geometry would have 5 electron groups." },
+      { label: "Trigonal planar", correct: false, explanation: "A central atom with a trigonal planar electron geometry would have 3 electron groups." },
+      { label: "Trigonal pyramidal", correct: false, explanation: "A central atom with a trigonal pyramidal molecular geometry would have a tetrahedral electron geometry, and thus have 4 electron groups." },
+    ],
   };
 
   const options: Array<ReactElement> = [];
-  question.answers.forEach((value, key, _) => {
-    options.push(<MultipleChoiceOption 
-      key={key} 
-      correct={value ?? false} 
+  for(let i = 0; i < question.answers.length; ++i) {
+    options.push(<MultipleChoiceOption
+      key={i}
+      title={question.answers[i]?.label ?? ''} 
+      correct={question.answers[i]?.correct ?? false}
       click_callback={handleClick} 
-      title={key}
     />);
-  });
+  }
 
   return (
     <>
