@@ -10,7 +10,6 @@ type MultipleChoiceOptionProps = {
 
 class MultipleChoiceOption extends React.Component<MultipleChoiceOptionProps> {
   render() {
-    console.log(this.props.selected);
     const background_color = this.props.selected ? this.props.correct ? 'bg-green-900' : 'bg-red-400' : 'bg-white';
     const text_color = this.props.selected && this.props.correct ? 'text-white' : 'text-black';
 

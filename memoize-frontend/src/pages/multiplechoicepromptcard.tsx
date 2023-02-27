@@ -1,10 +1,10 @@
 import React from "react";
 
-type QuestionCardProps = {
+type MultipleChoicePromptCardProps = {
   prompt: string
 }
 
-class QuestionCard extends React.Component<QuestionCardProps> {
+class MultipleChoicePromptCard extends React.Component<MultipleChoicePromptCardProps> {
   render() {
     return (
       <>
@@ -20,4 +20,4 @@ class QuestionCard extends React.Component<QuestionCardProps> {
   }
 }
 
-export default QuestionCard;
+export default MultipleChoicePromptCard;

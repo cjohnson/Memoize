@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 
 import MultipleChoiceOption from "./multiplechoiceoption";
+import MultipleChoicePromptCard from "./multiplechoicepromptcard";
 
 interface MultipleChoiceAnswer {
   label: string,
@@ -50,6 +51,7 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
 
     return (
       <>
+        <MultipleChoicePromptCard prompt="What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?"/>
         <div className="columns">
           { options }
         </div>

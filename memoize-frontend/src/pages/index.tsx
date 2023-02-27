@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 
-import QuestionCard from "./questioncard";
+import MultipleChoicePromptCard from "./multiplechoicepromptcard";
 import MultipleChoiceQuestion from "./multiplechoicequestion";
 import { MultipleChoiceQuestionProps } from "./multiplechoicequestion";
 
@@ -24,7 +24,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="bg-gray-200 flex justify-center items-center space-between h-screen">
-        <QuestionCard prompt="What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?"/>
         <MultipleChoiceQuestion prompt={question.prompt} answers={question.answers} />
       </main>
     </>
