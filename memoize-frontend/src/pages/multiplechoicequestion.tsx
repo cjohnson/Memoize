@@ -39,12 +39,16 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
   render() {
     const options: Array<ReactElement> = [];
     for(let i = 0; i < this.props.answers.length; ++i) {
+      const selected = this.state.selections[i] ?? false;
+      const questionLabel = this.props.answers[i]?.label ?? '';
+      const isCorrect = this.props.answers[i]?.correct ?? false;
+
       options.push(<MultipleChoiceOption
         key={i}
         index={i}
-        selected={this.state.selections[i] ?? false}
-        title={this.props.answers[i]?.label ?? ''} 
-        correct={this.props.answers[i]?.correct ?? false}
+        selected={selected}
+        title={questionLabel} 
+        correct={isCorrect}
         click_callback={this.select}
       />);
     }
@@ -52,10 +56,16 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
     const explanations: Array<ReactElement> = [];
     for(let i = 0; i < this.props.answers.length; ++i) {
       if(!this.state.selections[i]) continue;
+      
+      const isCorrect = this.props.answers[i]?.correct ?? false;
+      const textColor = isCorrect ? 'text-green-900' : 'text-red-500';
+      const questionLabel = this.props.answers[i]?.label ?? '';
+      const correctionText = isCorrect ? 'Correct!' : 'Not quite.';
+      const explanation = this.props.answers[i]?.explanation ?? '';
 
       explanations.push(<div className="m-4">
-        <p className={ this.props.answers[i]?.correct ?? false ? 'text-green-900' : 'text-red-500' }><strong>{ this.props.answers[i]?.label ?? '' } - { this.props.answers[i]?.correct ?? false ? 'Correct!' : 'Not quite.' }</strong></p>
-        <p>{ this.props.answers[i]?.explanation ?? '' }</p>
+        <p className={ textColor }><strong>{ questionLabel } - { correctionText }</strong></p>
+        <p>{ explanation }</p>
       </div>);
     }
 
@@ -68,7 +78,7 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
               { options }
             </div>
           </div>
-          <div>
+          <div className="max-w-xl">
             { explanations }
           </div>
         </div>
