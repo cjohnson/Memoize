@@ -17,21 +17,25 @@ export interface MultipleChoiceQuestionProps {
 
 interface MultipleChoiceQuestionState {
   selections: Array<boolean>;
+  selectedExplanations: Array<MultipleChoiceAnswer>;
 }
 
 class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps, MultipleChoiceQuestionState> {
   constructor(props: MultipleChoiceQuestionProps) {
     super(props);
 
-    this.state = { 
-      selections: Array<boolean>(this.props.answers.length).fill(false) 
-    }
+    this.state = { selections: [], selectedExplanations: [] }
 
     this.select = this.select.bind(this);
   }
 
-  select = (index: number) => this.setState(state => { 
+  select = (index: number) => this.setState(state => {
+    if(state.selections[index]) return state;
+
     state.selections[index] = true;
+
+    state.selectedExplanations.push(this.props.answers[index] 
+      ?? { label: '', correct: false, selected: false, explanation: '' });
 
     return state;
   });
@@ -54,16 +58,14 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
     }
 
     const explanations: Array<ReactElement> = [];
-    for(let i = 0; i < this.props.answers.length; ++i) {
-      if(!this.state.selections[i]) continue;
-      
-      const isCorrect = this.props.answers[i]?.correct ?? false;
+    for(let i = 0; i < this.state.selectedExplanations.length; ++i) {
+      const isCorrect = this.state.selectedExplanations[i]?.correct ?? false;
       const textColor = isCorrect ? 'text-green-900' : 'text-red-500';
-      const questionLabel = this.props.answers[i]?.label ?? '';
+      const questionLabel = this.state.selectedExplanations[i]?.label ?? '';
       const correctionText = isCorrect ? 'Correct!' : 'Not quite.';
-      const explanation = this.props.answers[i]?.explanation ?? '';
+      const explanation = this.state.selectedExplanations[i]?.explanation ?? '';
 
-      explanations.push(<div className="m-4">
+      explanations.push(<div key={i} className="m-4">
         <p className={ textColor }><strong>{ questionLabel } - { correctionText }</strong></p>
         <p>{ explanation }</p>
       </div>);
