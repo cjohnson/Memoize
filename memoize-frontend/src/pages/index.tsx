@@ -23,9 +23,7 @@ const Home: NextPage = () => {
         <meta name="description" content="memorization made easy" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-gray-200 flex justify-center items-center space-between h-screen">
-        <MultipleChoiceQuestion prompt={question.prompt} answers={question.answers} />
-      </main>
+      <MultipleChoiceQuestion prompt={question.prompt} answers={question.answers} />
     </>
   );
 };

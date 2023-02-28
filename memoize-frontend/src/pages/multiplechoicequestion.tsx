@@ -75,15 +75,17 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
 
     return (
       <>
-        <div className="columns">
-          <div className="flex justify-center items-center space-between">
-            <MultipleChoicePromptCard prompt={ this.props.prompt }/>
-            <div className="columns">
-              { options }
+        <div className="bg-gray-200 flex justify-center space-between h-screen">
+          <div className="items-center space-between">
+            <div className="m-auto sm:p-10 flex justify-center items-center space-between">
+              <MultipleChoicePromptCard prompt={ this.props.prompt }/>
+              <div className="columns">
+                { options }
+              </div>
             </div>
-          </div>
-          <div className="max-w-xl">
-            { explanations }
+            <div className="max-w-xl">
+                { explanations }
+            </div>
           </div>
         </div>
       </>
