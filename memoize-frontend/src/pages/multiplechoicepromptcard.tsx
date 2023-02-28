@@ -8,11 +8,11 @@ class MultipleChoicePromptCard extends React.Component<MultipleChoicePromptCardP
   render() {
     return (
       <>
-        <div className="max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-white">
-          <div className="px-6 py-4">
-            <p className="text-gray-700 text-base">
+        <div className="max-w-xl rounded-lg overflow-hidden m-4">
+          <div>
+            <h1 className="text-gray-700 text-xl">
               { this.props.prompt }
-            </p>
+            </h1>
           </div>
         </div>
       </>
