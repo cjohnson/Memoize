@@ -1,8 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 
-import MultipleChoiceQuestion from "@component/components/MultipleChoiceQuestion";
-import { MultipleChoiceQuestionData } from "@component/components/QuestionServer/QuestionServer";
+import QuestionServer, { MultipleChoiceQuestionData } from "@component/components/QuestionServer/QuestionServer";
 import { MultipleChoiceAnswer } from "@component/components/MultipleChoiceQuestion/MultipleChoiceQuestion";
 
 const questions: Array<MultipleChoiceQuestionData> = [
@@ -26,7 +25,7 @@ const Home: NextPage = () => {
         <meta name="description" content="memorization made easy" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MultipleChoiceQuestion index={1} prompt={questions[0]?.prompt ?? ''} answers={questions[0]?.answers ?? []} />
+      <QuestionServer questions={ questions } />
     </>
   );
 };

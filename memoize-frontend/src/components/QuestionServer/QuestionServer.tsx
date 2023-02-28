@@ -34,3 +34,5 @@ class QuestionServer extends React.Component<QuestionServerProps, QuestionServer
     );
   }
 }
+
+export default QuestionServer;
