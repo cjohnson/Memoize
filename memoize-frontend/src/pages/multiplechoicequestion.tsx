@@ -14,6 +14,7 @@ const multipleChoiceAnswerDefault: MultipleChoiceAnswer
 
 export interface MultipleChoiceQuestionProps {
   prompt: string;
+  index: number;
   answers: Array<MultipleChoiceAnswer>;
 }
 
@@ -78,7 +79,7 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
         <div className="bg-gray-200 flex justify-center h-screen">
           <div className="items-center">
             <div className="m-auto mt-5 flex flex-col justify-center">
-              <MultipleChoicePromptCard prompt={ this.props.prompt }/>
+              <MultipleChoicePromptCard index={ this.props.index } prompt={ this.props.prompt }/>
               <div className="grid grid-cols-2">
                 { options }
               </div>

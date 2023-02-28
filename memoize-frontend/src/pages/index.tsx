@@ -1,11 +1,9 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 
-import MultipleChoicePromptCard from "./multiplechoicepromptcard";
 import MultipleChoiceQuestion from "./multiplechoicequestion";
-import { MultipleChoiceQuestionProps } from "./multiplechoicequestion";
 
-const question: MultipleChoiceQuestionProps = {
+const question = {
   prompt: 'What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?', 
   answers: [
     { label: "Tetrahedral", correct: false, explanation: "A central atom with a tetrahedral electron geometry would have 4 electron groups." },
@@ -23,7 +21,7 @@ const Home: NextPage = () => {
         <meta name="description" content="memorization made easy" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MultipleChoiceQuestion prompt={question.prompt} answers={question.answers} />
+      <MultipleChoiceQuestion index={1} prompt={question.prompt} answers={question.answers} />
     </>
   );
 };
