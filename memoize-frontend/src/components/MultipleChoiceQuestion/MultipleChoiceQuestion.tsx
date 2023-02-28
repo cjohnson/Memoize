@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 import MultipleChoiceOption from "./MultipleChoiceOption";
 import MultipleChoiceQuestionPrompt from "./MultipleChoiceQuestionPrompt";
 
-interface MultipleChoiceAnswer {
+export interface MultipleChoiceAnswer {
   label: string,
   correct: boolean,
   selected?: boolean,
