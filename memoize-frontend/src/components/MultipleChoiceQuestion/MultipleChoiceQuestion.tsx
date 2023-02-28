@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 
-import MultipleChoiceOption from "./multiplechoiceoption";
-import MultipleChoicePromptCard from "./multiplechoicepromptcard";
+import MultipleChoiceOption from "./MultipleChoiceOption";
+import MultipleChoiceQuestionPrompt from "./MultipleChoiceQuestionPrompt";
 
 interface MultipleChoiceAnswer {
   label: string,
@@ -79,7 +79,7 @@ class MultipleChoiceQuestion extends React.Component<MultipleChoiceQuestionProps
         <div className="bg-gray-200 flex justify-center h-screen">
           <div className="items-center">
             <div className="m-auto mt-5 flex flex-col justify-center">
-              <MultipleChoicePromptCard index={ this.props.index } prompt={ this.props.prompt }/>
+              <MultipleChoiceQuestionPrompt index={ this.props.index } prompt={ this.props.prompt }/>
               <div className="grid grid-cols-2">
                 { options }
               </div>

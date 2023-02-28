@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 
-import MultipleChoiceQuestion from "./multiplechoicequestion";
+import MultipleChoiceQuestion from "@component/components/MultipleChoiceQuestion";
 
 const question = {
   prompt: 'What is the electron geometry of a central atom with 5 electron pairs, 2 bonding pairs, and 3 lone pairs?', 

@@ -5,7 +5,7 @@ type MultipleChoicePromptCardProps = {
   prompt: string
 }
 
-class MultipleChoicePromptCard extends React.Component<MultipleChoicePromptCardProps> {
+class MultipleChoiceQuestionPrompt extends React.Component<MultipleChoicePromptCardProps> {
   render() {
     return (
       <>
@@ -22,4 +22,4 @@ class MultipleChoicePromptCard extends React.Component<MultipleChoicePromptCardP
   }
 }
 
-export default MultipleChoicePromptCard;
+export default MultipleChoiceQuestionPrompt;
